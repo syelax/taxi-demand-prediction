@@ -5,5 +5,19 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "pandas>=2.3.0",
+    "hopsworks[python]==4.2.2",
+    "lightgbm>=4.6.0",
+    "optuna>=4.4.0",
+    "pandas<2.3.0",
+    "pyarrow>=20.0.0",
+    "python-dotenv>=1.1.1",
+    "scikit-learn>=1.7.0",
+    "xgboost>=3.0.2",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "notebook>=7.4.4",
+    "plotly>=6.2.0",
+    "tqdm>=4.67.1",
 ]
