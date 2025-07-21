@@ -2,7 +2,7 @@ name: hourly-taxi-demand-feature-pipeline
 
 on:
   schedule:
-    - cron: "0****"
+    - cron: "0 * * * *"
 
 jobs:
   feature_pipeline:
