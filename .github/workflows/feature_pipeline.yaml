@@ -1,0 +1,29 @@
+name: hourly-taxi-demand-feature-pipeline
+
+on:
+  schedule:
+    - cron: "0****"
+
+jobs:
+  feature_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.4.20"
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+      - name: Install the project
+        run: uv sync --locked --all-extras --dev
+
+      - name: execute python workflows from bash script
+        env:
+          HOPSWORKS_API_KEY: ${{secrets.HOPSWORKS_API_KEY}}
+        run: uv run jupyter nbvonvert -to notebook --execute notebook/11_feature_pipeline.ipynb
